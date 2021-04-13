@@ -1,0 +1,1 @@
+#include "Insertion.h"double Insertion::insertionSort(double arr[], int size, int i) {	double key;	int j;	for (int k = 1; k < size; k++) {		key = arr[k];		j = k;		while (arr[j - 1] > key && j > 0) {			arr[j] = arr[j - 1];			j--;		}		arr[j] = key;	}	return arr[i];}
