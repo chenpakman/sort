@@ -3,7 +3,7 @@
 #include <iomanip> 
 #include "Selection.h"
 #include "Quintuplet.h"
-//#include "Insertion.h"
+#include "Insertion.h"
 using namespace std;
 void copyArr(double* toArr, double* fromArr, int size);
 bool isValidInput(string input, int& index);
@@ -15,7 +15,7 @@ int main() {
 	size_t idx = 0;
 	Selection s1;
 	Quintuplet q1;
-	//Insertion i1;
+	Insertion i1;
 	cin >> n;
 	cin >> i;
 	if (n < 0 || i>n) {
@@ -41,18 +41,26 @@ int main() {
 	}
 	copyArr(numbersForQuintuplet, numbersForSelection, n);
 	copyArr(numbersForInsertion, numbersForSelection, n);
-	
+	s1.runTime(numbersForSelection, 0, n - 1, i);
 	double selection_i = s1.selection(numbersForSelection, 0, n - 1, i);
+	q1.runTime(numbersForQuintuplet, n, i);
 	double quintuplet_i = q1.quintuplet(numbersForQuintuplet, n, i);
-	//double insertion_i = i1.insertionSort(numbersForInsertion, n, i);
+	i1.runTime(numbersForInsertion, n, i);
+	double insertion_i = i1.insertionSort(numbersForInsertion, n, i);
+	cout << "Insertion sort i'th element: " << endl;
+	cout << std::fixed << std::setprecision(4) << insertion_i << endl;
 	cout << "Selection i'th element: "<<endl;
 	cout << std::fixed << std::setprecision(4) << selection_i << endl;
-	cout << "Quintuplet i'th element: " << endl;
+	
+	cout << "Quintuplet algorithm i'th element: " << endl;
 	cout << std::fixed << std::setprecision(4) << quintuplet_i << endl;
-	cout << "Insertion i'th element: " << endl;
-	//cout << std::fixed << std::setprecision(4) << insertion_i << endl;
+	
+
 	delete[] numbersForSelection;
 	delete[] numbersForQuintuplet;
+	delete[] numbersForInsertion;
+
+	
 }
 
 bool isValidInput(string input, int& index) {
