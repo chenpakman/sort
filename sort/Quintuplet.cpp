@@ -1,5 +1,5 @@
 #include "Quintuplet.h"
-#include "Selection.h"
+#include "Partition.h"
 #include <chrono>
 #include <iostream>
 #include <iomanip>
@@ -15,13 +15,10 @@ void Quintuplet::BubbleSort(double arr[], int n) {
 		}
 	}
 }
-void Quintuplet::swap(double& x, double& y) {
-	double temp = x;
-	x = y;
-	y = temp;
-}
+
 double Quintuplet::quintuplet(double arr[], int n, int i) {
 	int sizeB;
+	Partition p;
 	if (n % 5 == 0) {
 		 sizeB = n / 5;
 	}
@@ -29,7 +26,7 @@ double Quintuplet::quintuplet(double arr[], int n, int i) {
 		sizeB = n / 5+1;
 	}
 	double* B = new double[sizeB];
-	Selection s2;
+	
 	int k;
 	int j = 0;
 	if (n <= 5) {
@@ -63,7 +60,7 @@ double Quintuplet::quintuplet(double arr[], int n, int i) {
 		delete[] B;
 		
 		
-		 k = s2.partition(arr, 0, n - 1);
+		 k = p.partition(arr, 0, n - 1);
 		if (k > i) {
 			 return quintuplet(arr, k, i);
 		}
@@ -73,22 +70,22 @@ double Quintuplet::quintuplet(double arr[], int n, int i) {
 		
 		}
 		else {
-			return arr[k-1];
+			return arr[k];
 			
 		}
 
 	}
 }
-void Quintuplet::runTime(double arr[], int n, int i) {
+double Quintuplet::runTime(double arr[], int n, int i) {
+	double number_i;
 	auto start = chrono::high_resolution_clock::now();
 	// unsync the I/O of C and C++.
 	ios_base::sync_with_stdio(false);
-	quintuplet(arr,n,i);// Here you put the name of the function you wish to measure
+	number_i=quintuplet(arr,n,i);// Here you put the name of the function you wish to measure
 	auto end = chrono::high_resolution_clock::now();
 
 		// Calculating total time taken by the program.
-		double time_taken =
-		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+	double time_taken =	chrono::duration_cast<chrono::nanoseconds>(end - start).count();
 	time_taken *= 1e-9;
 	ofstream myfile;
 	myfile.open("Measure.txt", std::ios::app); // The name of the file
@@ -96,4 +93,5 @@ void Quintuplet::runTime(double arr[], int n, int i) {
 	myfile << "Time taken by function Quintuplet is : " << fixed<< time_taken << setprecision(9);
 	myfile << " sec" << endl;
 	myfile.close();
+	return number_i;
 }

@@ -4,9 +4,9 @@
 class Selection {
 
 public:
-	int partition(double arr[], int begin, int end);
-	void swap(double& a, double& b);
+	//int partition(double arr[], int begin, int end);
+	//void swap(double& a, double& b);
 	double selection(double arr[], int left, int right, int i);
-	void runTime(double arr[], int left, int right, int i);
+	double runTime(double arr[], int left, int right, int i);
 };
 #endif

@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Insertion.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Partition.cpp" />
     <ClCompile Include="Quintuplet.cpp" />
     <ClCompile Include="Selection.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="Partition.h" />
     <ClInclude Include="Insertion.h" />
     <ClInclude Include="Quintuplet.h" />
     <ClInclude Include="Selection.h" />
