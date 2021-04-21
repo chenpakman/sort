@@ -21,6 +21,9 @@ inline bool isValidInput(string input) {
 	int inputLen = input.length();
 	int countAfterPoint = 0;
 	int index = 0;
+	if (input[index] == '-') {
+		index++;
+	}
 	while (input[index] != '.') {
 
 		if (inputLen == index || !isNumber(input[index]))//Check if there is no '.'
